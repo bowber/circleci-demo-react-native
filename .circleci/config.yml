@@ -114,7 +114,9 @@ jobs:
             
   android-build-and-test:
     working_directory: ~/demo-react-native/android
-    executor: android/android-machine
+    executor: 
+      name: android/android-machine
+      tag: 2022.12.1
     steps:
       - checkout:
           path: ~/demo-react-native
