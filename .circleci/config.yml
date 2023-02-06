@@ -84,7 +84,7 @@ jobs:
       - run: 
           command: pod install
           working_directory: ios
-
+      - run: bundle update --bundler
       - run: 
           command: bundle install
           working_directory: ios
@@ -113,7 +113,7 @@ jobs:
   android-build-and-test:
     working_directory: ~/demo-react-native/android
     docker:
-      - image: circleci/android:api-29-node
+      - image: circleci/android@2.1.2
     steps:
       - checkout:
           path: ~/demo-react-native
@@ -123,7 +123,7 @@ jobs:
 
       - restore_cache:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
-
+      - run: bundle update --bundler
       - run: bundle install
 
       - save_cache:
